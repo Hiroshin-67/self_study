@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>テスト</title>
+  </head>
+  <body>
+    <h1>季節のフルール</h1>
+    <div id='winter'>
+      <p>りんご</p>
+      <p>みかん</p>
+    </div>
+
+    <div id='summer'>
+      <p>スイカ</p>
+      <p>夏みかん</p>
+    </div>
+
+    <button onclick="getElements();">要素を取得</button>
+
+  <script>
+    function getElements(){
+      let winter = document.getElementById('winter');
+      let elements = winter.getElementsByTagName('p');
+      for(let i=0;i<elements.length;i++){
+        console.log(elements.item(i).textContent)
+      }
+    }
+  </script>
+
+  </body>
+</html>
