@@ -3,6 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>テスト</title>
+    <style type="text/css">
+    div,p{
+      padding: 20px;
+      margin: 10px;
+      width: 30%;
+    }
+    .box{
+      border: 1px solid #ff0000;
+    }
+    </style>
   </head>
   <body>
     <h1>季節のフルール</h1>
@@ -16,7 +26,15 @@
       <p>夏みかん</p>
     </div>
 
-    <button onclick="getElements();">要素を取得</button>
+    <div class='box'>
+      <p> 外出記録 </p>
+      <p class="box">グルマン</p>
+      <p class="box">垂井駅</p>
+    </div>
+
+
+
+    <button onclick="getElements2();">要素を取得</button>
 
   <script>
     function getElements(){
@@ -24,6 +42,12 @@
       let elements = winter.getElementsByTagName('p');
       for(let i=0;i<elements.length;i++){
         console.log(elements.item(i).textContent)
+      }
+    }
+    function getElements2(){
+      let elements = document.getElementsByClassName('box');
+      for(let i=0;i<elements.length;i++){
+        elements.item(i).style.border = "2px solid #0000ff";
       }
     }
   </script>
