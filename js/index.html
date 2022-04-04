@@ -1,103 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>test</title>
-  </head>
-  <body>
-    <!-- サンプルコード -->
-    <h1>初めてのJavascript</h1>
-    <p>HTMLに直接書いてあるよ</p>
-    <script>
-      document.write("<p>JavaScriptテスト</p>");
-    </script>
-    <p>別のファイルに記述してあるよ</p>
-
-    <script src=test.js> </script>
-
-    <p>JavaScriptが無効になっている時</p>
-    <noscript>
-    JavaScriptが無効になっています
-    </noscript>
-    <p>ご飯を食べました</p>
-    <p id='place'> 岐阜県</p>
-    <p id='name'> ココス</p>
-
-    <p> ハンバーグ美味しかった</p>
-
-    <script>
-    function getElement(){
-      let element = document.getElementById('place');
-      console.log('場所：' + element.textContent);
-
-      let element2 = document.getElementById('name');
-      document.write('<p>店名：' + element2.textContent + '</p>');
-    }
-
-      function getElements(){
-        let elements = document.getElementsByTagName('p');
-        let len = elements.length;
-        let item = elements.item(0);
-        let element = elements.item('place');
-        for(let i=0;i<len;i++){
-          console.log(elements.item(i));
-        }
-      }
-      functin getElements2(){
-        let winter = document.getElementById('winter');
-        let elements = winter.getElementsByTagName('p');
-        for(let i=0;i<elements.length;i++){
-          console.log(elements[i]);
-        }
-      }
-
-    </script>
-
-    <button onClick="getElements();">要素を取得</button>
-
-
-
-    <!--
-    <script>
-    //　作者　広岡
-    let num = 10;
-    num = num + 5;
-    document.write(num);
-    </script>
-
-    <script>
-    let num = 10;
-    let sum = 0;
-    for(let i=0;i<=num;i++){
-      sum = sum + i;
-      document.write("sum = " + sum);
-    }
-    </script>
-
-
-    <script>
-    let mat = [[1, 2],[3, 4]]
-    for(let i = 0;i<2;i++){
-      for(let j = 0; j<2;j++)
-      document.write(mat[i][j] + "<br>")
-    }
-
-    let user = {
-      name : '広岡伸之甫',
-      age : 24,
-      address : '岐阜'
-      getAge:function(){
-        return this.age;
-      }
-    }
-    document.write(user.name + "<br>");
-    document.write(user.getAge());
-
-    </script>
-  -->
-
-
-
-
-  </body>
+<html lang="ja">
+<head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Document</title>
+</head>
+<body>
+  <ol id="lists">
+  </ol>
+  <button id="addBtn">もっと</button>
+  <script src="index.js"></script>
+</body>
 </html>
