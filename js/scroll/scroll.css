@@ -13,13 +13,14 @@
   margin: 0 auto;
   opacity: 0;
   position: absolute;
-  top: 2000px;
-  /* left: -300px; */
+  top: 1000px;
+  transform: translateX(0);
   transition: 1s;
 }
 
 .js-fade {
   background-color: rgb(241, 166, 166);
-  transform: translateX(200px);
+  transform: translateX(300px);
   transition: 1s;
+  opacity: 1;
 }

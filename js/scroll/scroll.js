@@ -23,11 +23,9 @@ window.addEventListener("scroll", function(){
   let main = document.querySelectorAll(".main");
   main.forEach(element => {
     if(scrollValue > element.getBoundingClientRect().top + scrollValue - pageHeight + 150){
-      element.style.opacity = 1;
       element.classList.add("js-fade");
     }
     else{
-      element.style.opacity = 0;
       element.classList.remove("js-fade");
     }
   });
