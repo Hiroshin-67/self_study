@@ -56,7 +56,7 @@ async function sample(){
 }
 
 async function sample2(){
-  for(let i=0;i<3;i++){
+  while(1){
     await sample();
   }
 }
