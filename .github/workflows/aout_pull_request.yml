@@ -1,0 +1,85 @@
+name: front-test
+on:
+  pull_request:
+    types: [opened, synchronize]
+permissions:
+  checks: write
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run lint
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm build
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
+
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+
+      - name: Run tests
+        uses: ArtiomTr/jest-coverage-report-action@v2.2.4
+        with:
+          annotations: failed-tests
+          test-script: npx jest --silent --max-workers=2 --bail
+          package-manager: npm
+
+  slack:
+    name: Slack Notify
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v1 # Workflow の結果を取得するアクション
+      - uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ env.WORKFLOW_CONCLUSION }}
+          fields: repo,message,commit,author,action,workflow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
